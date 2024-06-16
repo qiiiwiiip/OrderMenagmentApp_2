@@ -1,0 +1,76 @@
+﻿<Page x:Class="OrderMenagmentApp_2.JobTitlesPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OrderMenagmentApp_2"
+        mc:Ignorable="d"
+        Title="JobTitles Page" Width="1500" Height="960">
+    <Page.Resources>
+        <!-- Стиль для кнопки -->
+        <Style x:Key="CustomButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <!-- Стиль текс боксов -->
+        <Style x:Key="CustomBoxStyle" TargetType="TextBox">
+            <Setter Property="Width" Value="359"/>
+            <Setter Property="Height" Value="30"/>
+
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="FontWeight" Value="Regular"/>
+            <Setter Property="FontSize" Value="20"/>
+
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <!-- Стиль для текста -->
+        <Style x:Key="CustomTextStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="FontWeight" Value="Regular"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+
+    </Page.Resources>
+
+    <Grid Background="#FF6EC0E3">
+        <DataGrid x:Name="dataGrid" SelectionChanged="DataGrid_SelectionChanged" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="30,30,0,0" Height="500" Width="1440" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Код" Binding="{Binding JobTitleID}"/>
+                <DataGridTextColumn Header="Должность" Binding="{Binding JobTitles}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock Text="Должность:" Style="{StaticResource CustomTextStyle}" Margin="30,570,0,0" />
+        <TextBox x:Name="jobTitleTextBox" Margin="194,570,0,0" Style="{StaticResource CustomBoxStyle}"/>
+
+        <Button Margin="30,617,0,0" Style="{StaticResource CustomButtonStyle}" Click="AddButton_Click" >
+            <Button.Content>
+                <TextBlock Text="Добавить" Style="{StaticResource CustomTextStyle}"/>
+            </Button.Content>
+        </Button>
+
+        <Button Margin="200,617,0,0" Style="{StaticResource CustomButtonStyle}" Click="UpdateButton_Click" >
+            <Button.Content>
+                <TextBlock Text="Обновить" Style="{StaticResource CustomTextStyle}"/>
+            </Button.Content>
+        </Button>
+
+        <Button Margin="370,617,0,0" Style="{StaticResource CustomButtonStyle}" Click="DeleteButton_Click" >
+            <Button.Content>
+                <TextBlock Text="Удалить" Style="{StaticResource CustomTextStyle}"/>
+            </Button.Content>
+        </Button>
+    </Grid>
+</Page>
+
+

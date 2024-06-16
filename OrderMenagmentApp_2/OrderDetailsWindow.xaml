@@ -1,0 +1,29 @@
+﻿<Window x:Class="OrderMenagmentApp_2.OrderDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Order Details" Height="400" Width="600">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="Описание:" FontWeight="Bold"/>
+            <TextBox x:Name="DescriptionTextBox" Margin="0,0,0,10" IsReadOnly="True"/>
+
+            <TextBlock Text="Дата начала:" FontWeight="Bold"/>
+            <TextBox x:Name="StartDateTextBox" Margin="0,0,0,10" IsReadOnly="True"/>
+
+            <TextBlock Text="Дата окончания:" FontWeight="Bold"/>
+            <TextBox x:Name="EndDateTextBox" Margin="0,0,0,10" IsReadOnly="True"/>
+
+            <TextBlock Text="Клиент:" FontWeight="Bold"/>
+            <TextBox x:Name="CustomerTextBox" Margin="0,0,0,10" IsReadOnly="True"/>
+
+            <TextBlock Text="Сотрудник:" FontWeight="Bold"/>
+            <TextBox x:Name="EmployeeTextBox" Margin="0,0,0,10" IsReadOnly="True"/>
+
+            <TextBlock Text="Услуга:" FontWeight="Bold"/>
+            <TextBox x:Name="ServiceTextBox" Margin="0,0,0,10" IsReadOnly="True"/>
+
+            <TextBlock Text="Статус:" FontWeight="Bold"/>
+            <TextBox x:Name="StatusTextBox" Margin="0,0,0,10" IsReadOnly="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

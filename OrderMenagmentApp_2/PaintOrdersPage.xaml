@@ -1,0 +1,94 @@
+﻿<Page x:Class="OrderMenagmentApp_2.PaintOrdersPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OrderMenagmentApp_2"
+        mc:Ignorable="d"
+        Title="Orders Page" Width="1500" Height="960">
+    <Page.Resources>
+        <!-- Стиль для кнопки -->
+        <Style x:Key="CustomButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <!-- Стиль текс боксов -->
+        <Style x:Key="CustomBoxStyle" TargetType="TextBox">
+            <Setter Property="Width" Value="359"/>
+            <Setter Property="Height" Value="30"/>
+
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="FontWeight" Value="Regular"/>
+            <Setter Property="FontSize" Value="20"/>
+
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <!-- Стиль для текста -->
+        <Style x:Key="CustomTextStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="FontWeight" Value="Regular"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+        <!-- Стиль для ячеек DataGrid -->
+        <Style TargetType="{x:Type DataGridCell}" x:Key="DataGridCellStyle">
+            <Setter Property="Background" Value="White"/>
+            <!-- Значение по умолчанию -->
+            <Style.Triggers>
+                <!-- Изменение цвета фона в зависимости от значения статуса -->
+                <DataTrigger Binding="{Binding StatusName}" Value="Создан">
+                    <Setter Property="Background" Value="White"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding StatusName}" Value="В работе">
+                    <Setter Property="Background" Value="LightGray"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding StatusName}" Value="Готов">
+                    <Setter Property="Background" Value="Orange"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding StatusName}" Value="Выдан">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+    </Page.Resources>
+    <Grid Background="#FF6EC0E3">
+        <DataGrid x:Name="dataGrid" SelectionChanged="DataGrid_SelectionChanged" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="30,30,0,0" Height="500" Width="1440" >
+            <DataGrid.Columns>
+                <!-- Добавьте этот атрибут для применения стиля к ячейкам -->
+                <DataGridTextColumn CellStyle="{StaticResource DataGridCellStyle}" Binding="{Binding OrderID}" Header="Код" Width="100"/>
+                <DataGridTextColumn CellStyle="{StaticResource DataGridCellStyle}" Binding="{Binding StatusName}" Header="Статус" Width="100"/>
+                <DataGridTextColumn CellStyle="{StaticResource DataGridCellStyle}" Binding="{Binding ServiceName}" Header="Услуга" Width="150"/>
+                <DataGridTextColumn CellStyle="{StaticResource DataGridCellStyle}" Binding="{Binding Description}" Header="Описание" Width="200"/>
+                <DataGridTextColumn CellStyle="{StaticResource DataGridCellStyle}" Binding="{Binding StartDate}" Header="Дата регистрации" Width="100"/>
+                <DataGridTextColumn CellStyle="{StaticResource DataGridCellStyle}" Binding="{Binding EndDate}" Header="Дата выдачи" Width="100"/>
+                <DataGridTextColumn CellStyle="{StaticResource DataGridCellStyle}" Binding="{Binding CustomerLastName}" Header="Клиент" Width="150"/>
+                <DataGridTextColumn CellStyle="{StaticResource DataGridCellStyle}" Binding="{Binding EmployeeLastName}" Header="Сотрудник" Width="150"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock Text="Статус" Style="{StaticResource CustomTextStyle}" Margin="30,570,0,0" />
+        <ComboBox x:Name="statusComboBox" HorizontalAlignment="Left"  Margin="270,570,0,0" VerticalAlignment="Top" Width="359" Height="30" FontFamily="Inter" FontSize="20"/>
+
+
+        <DatePicker x:Name="startDateDatePicker" HorizontalAlignment="Left" Margin="670,720,0,0" VerticalAlignment="Top" Width="359" Height="30" Visibility="Hidden"/>
+        <DatePicker x:Name="endDateDatePicker" HorizontalAlignment="Left" Margin="270,720,0,0" VerticalAlignment="Top" Width="359" Height="30" Visibility="Hidden"/>
+
+        <Button Margin="30,870,0,0" Style="{StaticResource CustomButtonStyle}" Click="UpdateButton_Click" >
+            <Button.Content>
+                <TextBlock Text="Обновить" Style="{StaticResource CustomTextStyle}"/>
+            </Button.Content>
+        </Button>
+
+    </Grid>
+</Page>
+
